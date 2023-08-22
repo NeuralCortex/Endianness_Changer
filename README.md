@@ -1,6 +1,6 @@
 # Endianness Changer 1.0.0
 
-![image](https://github.com/NeuralCortex/Border_Generator/blob/main/images/border.png)
+![image](https://github.com/NeuralCortex/Endianness_Changer/blob/main/images/endian.png)
 
 ## Funktionsweise des Programms
 
