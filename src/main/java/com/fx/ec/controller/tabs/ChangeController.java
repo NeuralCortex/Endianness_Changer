@@ -192,7 +192,9 @@ public class ChangeController implements Initializable, PopulateInterface {
                 Globals.propman.put(Globals.DIR_INPUT, dir.getAbsolutePath());
                 Globals.propman.save();
 
-                TreeItem root = new TreeItem(new FileTreeItem(dir));
+                FileTreeItem start=new FileTreeItem(dir);
+                start.setFileName(dir.getName());
+                TreeItem root = new TreeItem(start);
                 ttvInput.setRoot(root);
                 traverseDir(dir, root);
 
@@ -212,7 +214,9 @@ public class ChangeController implements Initializable, PopulateInterface {
                     Globals.propman.put(Globals.DIR_OUTPUT, dir.getAbsolutePath());
                     Globals.propman.save();
 
-                    TreeItem root = new TreeItem(new FileTreeItem(dir));
+                    FileTreeItem start=new FileTreeItem(dir);
+                    start.setFileName(dir.getName());
+                    TreeItem root = new TreeItem(start);
                     ttvOutput.setRoot(root);
 
                     ProgressDialog progressDialog = new ProgressDialog(mainController.getStage(), bundle);
@@ -278,9 +282,12 @@ public class ChangeController implements Initializable, PopulateInterface {
             if (c.listFiles() == null) {
                 FileTreeItem fileTreeItem = new FileTreeItem(c);
                 //getEndianness(c);
+                fileTreeItem.setFileName(c.getName());
                 root.getChildren().add(new TreeItem(fileTreeItem));
             } else {
-                TreeItem fileItem = new TreeItem<>(new FileTreeItem(c));
+                FileTreeItem dir=new FileTreeItem(c);
+                dir.setFileName(c.getName());
+                TreeItem fileItem = new TreeItem<>(dir);
                 traverseDir(c, fileItem);
                 root.getChildren().add(fileItem);
             }

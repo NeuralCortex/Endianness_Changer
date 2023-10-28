@@ -58,7 +58,6 @@ public class ConverterTask extends Task<Integer> {
         String oldParent = root.getValue().getFile().getParent();
         String newParent = out.getValue().getFile().getAbsolutePath();
 
-        //System.out.println(oldParent + " " + newParent);
         traverseTree(root, out, oldParent, newParent);
 
         return 1;
@@ -73,7 +72,8 @@ public class ConverterTask extends Task<Integer> {
             String fileName = outRoot.getValue().getFile().getAbsolutePath().replace(oldParent, newParent);
             File dir = new File(nameSize == 1 ? fileName.toUpperCase() : fileName.toLowerCase());
 
-            outRoot.getValue().setFile(dir);
+            outRoot.getValue().setFileName(dir.getName());
+            //outRoot.getValue().setFile(dir);
             out.getChildren().add(outRoot);
 
             dir.mkdir();
@@ -88,8 +88,8 @@ public class ConverterTask extends Task<Integer> {
 
                     String fileName = child.getValue().getFile().getAbsolutePath().replace(oldParent, newParent);
                     File file = new File(nameSize == 1 ? fileName.toUpperCase() : fileName.toLowerCase());
-                    
-                    child.getValue().setFile(file);
+
+                    child.getValue().setFileName(file.getName());
                     outRoot.getChildren().add(child);
 
                     convertFile(child, file);
@@ -98,7 +98,7 @@ public class ConverterTask extends Task<Integer> {
                 }
 
             } else {
-                traverseTree(child, outRoot, oldParent,newParent);
+                traverseTree(child, outRoot, oldParent, newParent);
             }
         }
     }

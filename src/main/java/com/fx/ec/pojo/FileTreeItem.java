@@ -34,7 +34,7 @@ public class FileTreeItem {
     }
 
     public String getFileName() {
-        return file.getName();
+        return fileName;
     }
 
     public void setFileName(String fileName) {
