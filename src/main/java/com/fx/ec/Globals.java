@@ -1,6 +1,7 @@
 package com.fx.ec;
 
 import java.nio.ByteOrder;
+import java.util.Locale;
 
 public class Globals {
 
@@ -19,6 +20,8 @@ public class Globals {
 
     //Nichts selktiert
     public static final int NO_SEL_VALUE = -9999;
+
+    public static final Locale DEFAULT_LOCALE = Locale.US;
 
     public static final String BUNDLE_PATH = "com.fx.ec.bundle.ec";
     public static final String LOG4J2_CONFIG_PATH = System.getProperty("user.dir") + "/config/log4j2.xml";
